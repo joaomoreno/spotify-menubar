@@ -27,6 +27,16 @@ swiftc -o SpotifyMenuBar.app/Contents/MacOS/SpotifyMenuBar main.swift -framework
 open SpotifyMenuBar.app
 ```
 
+## Installation
+
+Download `SpotifyMenuBar.zip` from [Releases](https://github.com/joaomoreno/spotify-menubar/releases), extract it, then remove the quarantine attribute:
+
+```bash
+xattr -cr SpotifyMenuBar.app
+```
+
+Then move to Applications and open.
+
 ## Requirements
 
 - macOS 12.0+
