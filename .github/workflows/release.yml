@@ -17,9 +17,7 @@ jobs:
         run: bash build.sh
 
       - name: Create ZIP archive
-        run: |
-          cd SpotifyMenuBar.app/..
-          zip -r SpotifyMenuBar.zip SpotifyMenuBar.app
+        run: zip -r SpotifyMenuBar.zip SpotifyMenuBar.app
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
