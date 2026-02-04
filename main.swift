@@ -51,13 +51,14 @@ class SpotifyController: ObservableObject {
     func getSpotifyArtworkUrl() -> String {
         if !isSpotifyRunning { return "" }
         let script = """
-        tell application "Spotify"
-            if player state is not stopped then
-                return artwork url of current track
-            else
-                return ""
-            end if
-        end tell
+        if application "Spotify" is running then
+            tell application "Spotify"
+                if player state is not stopped then
+                    return artwork url of current track
+                end if
+            end tell
+        end if
+        return ""
         """
         return runAppleScript(script)
     }
@@ -81,9 +82,12 @@ class SpotifyController: ObservableObject {
     func getSpotifyPlayerState() -> Bool {
         if !isSpotifyRunning { return false }
         let script = """
-        tell application "Spotify"
-            return player state as string
-        end tell
+        if application "Spotify" is running then
+            tell application "Spotify"
+                return player state as string
+            end tell
+        end if
+        return "stopped"
         """
         let result = runAppleScript(script)
         return result == "playing"
@@ -92,13 +96,14 @@ class SpotifyController: ObservableObject {
     func getSpotifyTrackName() -> String {
         if !isSpotifyRunning { return "" }
         let script = """
-        tell application "Spotify"
-            if player state is not stopped then
-                return name of current track
-            else
-                return "No track"
-            end if
-        end tell
+        if application "Spotify" is running then
+            tell application "Spotify"
+                if player state is not stopped then
+                    return name of current track
+                end if
+            end tell
+        end if
+        return "No track"
         """
         return runAppleScript(script)
     }
@@ -106,13 +111,14 @@ class SpotifyController: ObservableObject {
     func getSpotifyArtist() -> String {
         if !isSpotifyRunning { return "" }
         let script = """
-        tell application "Spotify"
-            if player state is not stopped then
-                return artist of current track
-            else
-                return ""
-            end if
-        end tell
+        if application "Spotify" is running then
+            tell application "Spotify"
+                if player state is not stopped then
+                    return artist of current track
+                end if
+            end tell
+        end if
+        return ""
         """
         return runAppleScript(script)
     }
